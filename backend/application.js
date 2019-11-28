@@ -31,6 +31,8 @@ extended: false
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'dist/student-app')));
 app.use('/', express.static(path.join(__dirname, 'dist/student-app')));
+
+//restful api route
 app.use('/api', studentRoute)
 // Create port
 const port = process.env.PORT || 4000;

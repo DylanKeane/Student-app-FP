@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/DylanKeane/Student-app-FP/issues"
   },
-  "homepage": "https://github.com/DylanKeane/Student-app-FP#readme",
+  
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
