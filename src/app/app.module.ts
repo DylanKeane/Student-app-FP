@@ -21,7 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AddStudentComponent,
     EditStudentComponent,
     StudentsListComponent,
-    BrowserAnimationsModule
+    
   ],
   imports: [
     BrowserModule,
