@@ -6,7 +6,7 @@ import { ApiService } from './../../shared/api.service';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 export interface Subject {
-  name:string;
+  name: string;
 }
 
 @Component({
@@ -19,14 +19,14 @@ export class AddStudentComponent implements OnInit {
   selectable = true;
   removable = true;
   addOnBlur = true;
-  @ViewChild('chipList' ,{ static: true }) chipList;
-  @ViewChild('resetStudentForm' ,{ static: true }) myNgForm;
+  @ViewChild('chipList', { static: true }) chipList;
+  @ViewChild('resetStudentForm', { static: true }) myNgForm;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   studentForm: FormGroup;
   subjectArray: Subject[] = [];
   SectioinArray: any = ['A', 'B', 'C', 'D', 'E'];
   ngOnInit() {
-  this.submitBookForm();
+    this.submitBookForm();
   }
   constructor(
     public fb: FormBuilder,
@@ -34,54 +34,54 @@ export class AddStudentComponent implements OnInit {
     private ngZone: NgZone,
     private studentApi: ApiService
   ) { }
- //reactive book form below
- submitBookForm() {
-  this.studentForm = this.fb.group({
-  student_name: ['', [Validators.required]],
-  student_email: ['', [Validators.required]],
-  section: ['', [Validators.required]],
-  subjects: [this.subjectArray],
-  dob: ['', [Validators.required]],
-  gender: ['Male']
-  })
-}
-//add dynamic languages
-add(event: MatChipInputEvent): void {
-  const input = event.input;
-  const value = event.value;
-  // Add language
-  if ((value || '').trim() && this.subjectArray.length < 5) {
-  this.subjectArray.push({ name: value.trim() })
+  //reactive book form below
+  submitBookForm() {
+    this.studentForm = this.fb.group({
+      student_name: ['', [Validators.required]],
+      student_email: ['', [Validators.required]],
+      section: ['', [Validators.required]],
+      subjects: [this.subjectArray],
+      dob: ['', [Validators.required]],
+      gender: ['Male']
+    })
   }
-  // Reset the input value
-  if (input) {
-  input.value = '';
-  }
+  //add dynamic languages
+  add(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+    // Add language
+    if ((value || '').trim() && this.subjectArray.length < 5) {
+      this.subjectArray.push({ name: value.trim() })
+    }
+    // Reset the input value
+    if (input) {
+      input.value = '';
+    }
   }
   /* Remove dynamic languages */
   remove(subject: Subject): void {
-  const index = this.subjectArray.indexOf(subject);
-  if (index >= 0) {
-  this.subjectArray.splice(index, 1);
+    const index = this.subjectArray.indexOf(subject);
+    if (index >= 0) {
+      this.subjectArray.splice(index, 1);
+    }
   }
-  }  
   //date
   formatDate(e) {
     var convertDate = new Date(e.target.value).toISOString().substring(0, 10);
     this.studentForm.get('dob').setValue(convertDate, {
-    onlyself: true
+      onlyself: true
     })
-    }  
-    //get erros if any
-    public handleError = (controlName: string, errorName: string) => {
+  }
+  //get erros if any
+  public handleError = (controlName: string, errorName: string) => {
     return this.studentForm.controls[controlName].hasError(errorName);
-    }  
-    //book submission
-    submitStudentForm() {
+  }
+  //book submission
+  submitStudentForm() {
     if (this.studentForm.valid) {
-    this.studentApi.AddStudent(this.studentForm.value).subscribe(res => {
-    this.ngZone.run(() => this.router.navigateByUrl('/students-list'))
-    });
+      this.studentApi.AddStudent(this.studentForm.value).subscribe(res => {
+        this.ngZone.run(() => this.router.navigateByUrl('/students-list'))
+      });
     }
-    }
+  }
 }

@@ -1,26 +1,27 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+
 // Define collection and schema
 let Student = new Schema({
 student_name: {
-type: String
-},
+     type: String
+    },
 student_email: {
-type: String
+    type: String
 },
 section: {
-type: String
+    type: String
 },
 subjects: {
-type: Array
+    type: Array
 },
 gender: {
-type: String
+    type: String
 },
 dob: {
-type: Date
+    type: Date
 }
 }, {
-collection: 'students'
+    collection: 'students'
 })
 module.exports = mongoose.model('Student', Student)

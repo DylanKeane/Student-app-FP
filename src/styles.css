@@ -12,7 +12,7 @@ body{margin:0;font-family:'Roboto', sans-serif;}
 .mat-sidenav,.mat-sidenav-content{padding:15px;}
 .mat-list-item.active{background:rgba(0, 0, 0, .04);}
 .mat-sidenav-content{padding:25px 40px 0;}
-.mat-sidenav{background-color:#F2F2F2;width:250px;}
+.mat-sidenav{background-color:rgb(103, 3, 143);width:250px;}
 .header{position:sticky;position:-webkit-sticky;top:0;z-index:1000;}
 mat-sidenav mat-icon{margin-right:12px;}
 .hamburger{margin-top:5px;cursor:pointer;}

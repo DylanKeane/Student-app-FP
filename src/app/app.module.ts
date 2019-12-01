@@ -21,7 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AddStudentComponent,
     EditStudentComponent,
     StudentsListComponent,
-    
+
   ],
   imports: [
     BrowserModule,
@@ -35,6 +35,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   providers: [ApiService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  
+
 })
 export class AppModule { }

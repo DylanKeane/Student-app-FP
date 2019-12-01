@@ -15,6 +15,8 @@ export interface Subject {
   styleUrls: ['./edit-student.component.css']
 })
 
+
+
 export class EditStudentComponent implements OnInit {
   visible = true;
   selectable = true;
@@ -37,7 +39,7 @@ export class EditStudentComponent implements OnInit {
     private ngZone: NgZone,
     private actRoute: ActivatedRoute,
     private studentApi: ApiService
-  ) { 
+  ) {
     var id = this.actRoute.snapshot.paramMap.get('id');
     this.studentApi.GetStudent(id).subscribe(data => {
       console.log(data.subjects)
@@ -49,8 +51,8 @@ export class EditStudentComponent implements OnInit {
         subjects: [data.subjects],
         dob: [data.dob, [Validators.required]],
         gender: [data.gender]
-      })      
-    })    
+      })
+    })
   }
 
   /* Reactive book form */
@@ -100,15 +102,15 @@ export class EditStudentComponent implements OnInit {
     return this.studentForm.controls[controlName].hasError(errorName);
   }
 
-  /* Update book */
+  /* Update loG */
   updateStudentForm() {
     console.log(this.studentForm.value)
     var id = this.actRoute.snapshot.paramMap.get('id');
     if (window.confirm('Are you sure you want to update?')) {
-      this.studentApi.UpdateStudent(id, this.studentForm.value).subscribe( res => {
+      this.studentApi.UpdateStudent(id, this.studentForm.value).subscribe(res => {
         this.ngZone.run(() => this.router.navigateByUrl('/students-list'))
       });
     }
   }
-  
+
 }
